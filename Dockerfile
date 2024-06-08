@@ -1,4 +1,5 @@
-FROM node:12 AS build
+# Stage 1: Build
+FROM node:14 AS build
 WORKDIR /app
 
 # Copy package.json and package-lock.json
@@ -12,7 +13,6 @@ COPY . .
 
 # Build the Angular app
 RUN npm run build
-
 
 # Stage 2: Runtime
 FROM nginx:1.21.1
